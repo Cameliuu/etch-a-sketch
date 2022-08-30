@@ -41,6 +41,10 @@ function changeColor(choice)
 {
     color=choice;
 }
+function clearGrid(){
+    const boxes= document.querySelectorAll(".box");
+    boxes.forEach((box) => box.style.setProperty("background-color","white"));
+}
 click=false;
 const container = document.querySelector(".grid-container")
 container.addEventListener("click", () => {
