@@ -15,7 +15,6 @@ function colorBox(color,box)
 {
 
     if(click) {
-        console.log("intra");
         box.style.setProperty("background-color", color);
     }
 }
@@ -49,9 +48,30 @@ click=false;
 const container = document.querySelector(".grid-container")
 container.addEventListener("click", () => {
     click = !click
-    console.log(click)
+    printColorMode();
 })
+let erase=false;
+const eraseButton=document.querySelector(".Erase")
+eraseButton.addEventListener("click", () =>
+{
+    erase = !erase;
+    if(erase)
+    {
+        prevColor=color;
+        changeColor('white');
+    }
+    else
+        changeColor(prevColor);
+})
+
 let color = 'black';
+
+let prevColor;
+function printColorMode(){
+    const mode = document.querySelector(".mode");
+    mode.textContent = (click) ? "Color Mode: ON" : "Color mode: OFF";
+}
+printColorMode();
 createGrid(16);
 modifyBox();
 
