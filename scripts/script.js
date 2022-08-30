@@ -11,12 +11,12 @@ function createGrid(size){
 
 
 }
-function changeColor()
+function colorBox(color,box)
 {
 
     if(click) {
         console.log("intra");
-        this.style.setProperty("background-color", "black");
+        box.style.setProperty("background-color", color);
     }
 }
 function modifyBox()
@@ -27,8 +27,9 @@ function modifyBox()
     boxes.forEach((box) => {
 
         // and for each one we add a 'click' listener
-        box.addEventListener('mouseover', changeColor);
-        box.addEventListener('mouseover', changeColor);
+        box.addEventListener('mouseover', () => {
+            colorBox(color,box);
+        });
     });
 }
 function changeSize(size)
@@ -36,11 +37,17 @@ function changeSize(size)
     createGrid(size);
     modifyBox()
 }
-let click = false;
+function changeColor(choice)
+{
+    color=choice;
+}
+click=false;
 const container = document.querySelector(".grid-container")
 container.addEventListener("click", () => {
     click = !click
     console.log(click)
 })
+let color = 'black';
 createGrid(16);
 modifyBox();
+
